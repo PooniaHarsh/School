@@ -541,7 +541,7 @@
         }
 
         .header-with-background {
-            background-image: url('schoolbg.jpg');
+            background-image: url('./images/schoolbg.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
