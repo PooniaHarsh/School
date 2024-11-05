@@ -47,6 +47,137 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+
+
+
+
+
+
+document.querySelector('.plus-code strong').addEventListener('click', function() {
+    const coordinates = this.textContent;
+    navigator.clipboard.writeText(coordinates).then(() => {
+        // Show feedback that coordinates were copied
+        const tooltip = document.createElement('div');
+        tooltip.className = 'tooltiptext';
+        tooltip.textContent = 'Copied!';
+        this.appendChild(tooltip);
+        setTimeout(() => tooltip.remove(), 2000);
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // Add to your existing scripts
+ document.addEventListener('DOMContentLoaded', function() {
+    // Touch event handling
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, false);
+
+    document.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+
+        if (Math.abs(diff) > swipeThreshold) {
+            // Handle menu open/close on swipe
+            const navMenu = document.querySelector('.nav-menu');
+            if (diff > 0 && !navMenu.classList.contains('active')) {
+                // Swipe left - open menu
+                navMenu.classList.add('active');
+            } else if (diff < 0 && navMenu.classList.contains('active')) {
+                // Swipe right - close menu
+                navMenu.classList.remove('active');
+            }
+        }
+    }
+
+    // Improved scroll handling
+    let lastScroll = 0;
+    const header = document.querySelector('.nav-container');
+    const scrollThreshold = 50;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (Math.abs(currentScroll - lastScroll) > scrollThreshold) {
+            if (currentScroll > lastScroll && currentScroll > header.offsetHeight) {
+                // Scrolling down - hide header
+                header.classList.add('nav-hidden');
+            } else {
+                // Scrolling up - show header
+                header.classList.remove('nav-hidden');
+            }
+            lastScroll = currentScroll;
+        }
+    });
+
+    // Resize handler with debounce
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            // Handle resize events
+            adjustLayoutForScreen();
+        }, 250);
+    });
+
+    function adjustLayoutForScreen() {
+        const isMobile = window.innerWidth <= 768;
+        document.body.classList.toggle('is-mobile', isMobile);
+        
+        // Adjust any necessary layout elements
+        if (!isMobile) {
+            document.querySelector('.nav-menu').classList.remove('active');
+        }
+    }
+
+    // Initialize layout
+    adjustLayoutForScreen();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //chatbot
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -229,4 +360,162 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     // Add your form submission logic here
     alert('Thank you for your message. We will get back to you soon!');
     this.reset();
+});
+
+
+// Chatbot functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const chatButton = document.querySelector('.chat-button');
+    const chatBox = document.querySelector('.chat-box');
+    const closeChat = document.querySelector('.close-chat');
+    const sendButton = document.querySelector('.send-button');
+    const chatInput = document.querySelector('.chat-input');
+    const chatMessages = document.querySelector('.chat-messages');
+
+    // Enhanced responses with more natural language and variations
+    const responses = {
+        greetings: {
+            keywords: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening'],
+            responses: [
+                "Hello! How can I assist you today?",
+                "Hi there! What can I help you with?",
+                "Welcome! How may I help you?"
+            ]
+        },
+        admission: {
+            keywords: ['admission', 'enroll', 'join', 'register'],
+            responses: [
+                "For admissions, you can:\n• Visit our Admissions page\n• Call us at 01596-242241\n• Email at info@adarshschoolpilani.com\n\nWould you like me to provide more details about the admission process?"
+            ]
+        },
+        fees: {
+            keywords: ['fee', 'fees', 'cost', 'payment'],
+            responses: [
+                "Our fee structure varies by grade level. For detailed information:\n• Contact our admission office\n• Call: 01596-242241\n• Visit our campus\n\nWould you like to schedule a meeting with our admission counselor?"
+            ]
+        },
+        contact: {
+            keywords: ['contact', 'phone', 'email', 'reach'],
+            responses: [
+                "You can reach us through:\n• Phone: 01596-242241\n• Mobile: +91 9462001107\n• Email: info@adarshschoolpilani.com\n• Address: Pilani - Chirawa Rd, near Panchayat Samiti"
+            ]
+        },
+        timing: {
+            keywords: ['timing', 'hours', 'schedule', 'time'],
+            responses: [
+                "School Timings:\n• Monday to Saturday\n• 8:00 AM to 2:30 PM\n\nOffice Hours:\n• 8:00 AM to 4:00 PM"
+            ]
+        },
+        facilities: {
+            keywords: ['facility', 'facilities', 'infrastructure', 'amenities'],
+            responses: [
+                "Our facilities include:\n• Modern Classrooms\n• Computer Labs\n• Science Labs\n• Library\n• Sports Ground\n• Transport\n\nWould you like specific information about any facility?"
+            ]
+        },
+        default: [
+            "I'm here to help! Could you please be more specific about what you'd like to know?",
+            "I'd be happy to assist you. Could you please rephrase your question?",
+            "Let me help you. What specific information are you looking for?"
+        ]
+    };
+
+    // Show typing indicator
+    function showTypingIndicator() {
+        const typing = document.createElement('div');
+        typing.className = 'typing-indicator';
+        typing.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+        chatMessages.appendChild(typing);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        return typing;
+    }
+
+    // Get random response from array
+    function getRandomResponse(array) {
+        return array[Math.floor(Math.random() * array.length)];
+    }
+
+    // Find matching response category
+    function findMatchingResponse(message) {
+        const lowercaseMsg = message.toLowerCase();
+        
+        for (const category in responses) {
+            if (category === 'default') continue;
+            
+            const keywords = responses[category].keywords;
+            if (keywords && keywords.some(keyword => lowercaseMsg.includes(keyword))) {
+                return getRandomResponse(responses[category].responses);
+            }
+        }
+        
+        return getRandomResponse(responses.default);
+    }
+
+    // Send message function
+    function sendMessage(message) {
+        if (message.trim() === '') return;
+
+        // Add user message
+        const userMessage = document.createElement('div');
+        userMessage.className = 'message sent';
+        userMessage.innerHTML = `<div class="message-content">${message}</div>`;
+        chatMessages.appendChild(userMessage);
+
+        // Show typing indicator
+        const typingIndicator = showTypingIndicator();
+
+        // Get and add bot response with delay
+        setTimeout(() => {
+            typingIndicator.remove();
+            const botMessage = document.createElement('div');
+            botMessage.className = 'message received';
+            botMessage.innerHTML = `<div class="message-content">${findMatchingResponse(message)}</div>`;
+            chatMessages.appendChild(botMessage);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 1500);
+
+        // Clear input
+        chatInput.value = '';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Event Listeners
+    chatButton.addEventListener('click', () => {
+        chatBox.classList.add('active');
+        chatButton.style.display = 'none';
+    });
+
+    closeChat.addEventListener('click', () => {
+        chatBox.classList.remove('active');
+        chatButton.style.display = 'flex';
+    });
+
+    sendButton.addEventListener('click', () => {
+        sendMessage(chatInput.value);
+    });
+
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendMessage(chatInput.value);
+        }
+    });
+
+    // Add quick reply buttons
+    const quickReplies = [
+        'Admission Process',
+        'Fee Structure',
+        'School Timings',
+        'Contact Info',
+        'Facilities'
+    ];
+
+    const quickRepliesContainer = document.createElement('div');
+    quickRepliesContainer.className = 'quick-replies';
+    quickReplies.forEach(reply => {
+        const button = document.createElement('button');
+        button.className = 'quick-reply';
+        button.textContent = reply;
+        button.addEventListener('click', () => sendMessage(reply));
+        quickRepliesContainer.appendChild(button);
+    });
+    chatBox.insertBefore(quickRepliesContainer, chatBox.querySelector('.chat-input-container'));
 });
