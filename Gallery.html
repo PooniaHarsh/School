@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="school-logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="school-logo.png">
+    <link rel="apple-touch-icon" href="school-logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Adarsh Vidhya Niketan Sr. Sec. School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Add navigation back to home -->
+    <nav class="nav-container">
+        <div class="nav-wrapper">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <section id="gallery" class="section fade-in">
+        <h2>Our Gallery</h2>
+        <div class="gallery-container">
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="building 1.jpg" alt="School Building" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="school (3).jpg" alt="School Campus" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img 1.jpeg" alt="School Activities" loading="lazy">
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="building 2.png" alt="School Facilities" loading="lazy">
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Add lightbox functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.classList.toggle('expanded');
+                });
+            });
+
+            document.addEventListener('click', function(e) {
+                if(e.target.closest('.gallery-item')) return;
+                document.querySelector('.gallery-item.expanded')?.classList.remove('expanded');
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+<!-- Add Gallery Section -->

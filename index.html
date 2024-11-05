@@ -9,7 +9,16 @@
     <title>Adarsh Vidhya Niketan Sr. Sec. School, Pilani</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="./style.css">
-    </style>
+    <link rel="stylesheet" href="./Gallery.html">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0/css/all.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+
+
+</style>
 </head>
 <body>
     <header class="header-with-background">
@@ -25,11 +34,11 @@
         <div class="nav-wrapper">
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#about-us" class="nav-link">About</a></li>
                 <li><a href="registration.html" class="nav-link register-highlight">Admissions</a></li>
                 <li><a href="#academics" class="nav-link">Academics</a></li>
                 <li><a href="#facilities" class="nav-link">Facilities</a></li>
-                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="Gallery.html" class="nav-link">Gallery</a></li>
                 <li><a href="#careers" class="nav-link">Careers</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
@@ -65,10 +74,16 @@
                         <img src="result.jpg" alt="Academic Achievements 2024-25" class="result-image">
                     </div>
                     <div class="result-slide">
-                        <img src="admission.png" alt="Admission Open 2024-25" class="result-image">
+                        <img src="Pumplet2024.jpg" alt="Academic Achievements 2024-25" class="result-image">
                     </div>
                     <div class="result-slide">
-                        <img src="result.jpg" alt="Academic Achievements 2024-25" class="result-image">
+                        <img src="10 board.jpeg" alt="Academic Achievements 2024-25" class="result-image">
+                    </div>
+                    <div class="result-slide">
+                        <img src="Pumplet a.jpg" alt="Academic Achievements 2024-25" class="result-image">
+                    </div>
+                    <div class="result-slide">
+                        <img src="Pumplet b.jpg" alt="Admission Open 2024-25" class="result-image">
                     </div>
                     <div class="result-slide">
                         <img src="admission.png" alt="Admission Open 2024-25" class="result-image">
@@ -84,6 +99,7 @@
             </div>
         </section>
 
+        
         <!-- Add other sections as needed -->
     </main>
 
@@ -183,194 +199,21 @@
     </section>
 
     <script>
-    // Add this to your existing script
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        // Add your form submission logic here
-        alert('Thank you for your message. We will get back to you soon!');
-        this.reset();
-    });
+    
     </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let currentSlideIndex = 0;
-            const totalSlides = document.querySelectorAll('.result-slide').length;
-            const slidesContainer = document.getElementById('resultsSlides');
-            const dotsContainer = document.getElementById('resultDots');
-
-            // Create dots
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('div');
-                dot.className = 'result-dot' + (i === 0 ? ' active' : '');
-                dot.onclick = () => goToSlide(i);
-                dotsContainer.appendChild(dot);
-            }
-
-            // Function to update slide position
-            function updateSlidePosition() {
-                slidesContainer.style.transform = `translateX(-${currentSlideIndex * 25}%)`; // 25% for each slide
-                
-                // Update dots
-                document.querySelectorAll('.result-dot').forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSlideIndex);
-                });
-            }
-
-            // Function to move slides
-            window.moveSlide = function(direction) {
-                currentSlideIndex = (currentSlideIndex + direction + totalSlides) % totalSlides;
-                updateSlidePosition();
-            }
-
-            // Function to go to specific slide
-            function goToSlide(index) {
-                currentSlideIndex = index;
-                updateSlidePosition();
-            }
-
-            // Auto-advance slides
-            let autoAdvance = setInterval(() => moveSlide(1), 5000);
-
-            // Pause auto-advance on hover
-            slidesContainer.addEventListener('mouseenter', () => clearInterval(autoAdvance));
-            slidesContainer.addEventListener('mouseleave', () => {
-                autoAdvance = setInterval(() => moveSlide(1), 5000);
-            });
-
-            // Touch support
-            let touchStartX = 0;
-            slidesContainer.addEventListener('touchstart', (e) => {
-                touchStartX = e.touches[0].clientX;
-            });
-
-            slidesContainer.addEventListener('touchend', (e) => {
-                const touchEndX = e.changedTouches[0].clientX;
-                const difference = touchStartX - touchEndX;
-                
-                if (Math.abs(difference) > 50) { // 50px threshold
-                    moveSlide(difference > 0 ? 1 : -1);
-                }
-            });
-
-            // Initialize first slide
-            updateSlidePosition();
-        });
+        
     </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const nav = document.querySelector('.nav-container');
-            const hamburger = document.querySelector('.hamburger');
-            const navMenu = document.querySelector('.nav-menu');
-            const overlay = document.querySelector('.nav-overlay');
-            const navLinks = document.querySelectorAll('.nav-link');
-            let lastScroll = 0;
-            let isMenuOpen = false;
-
-            // Handle scroll behavior
-            function handleScroll() {
-                const currentScroll = window.pageYOffset;
-                
-                // Add scrolled class for background
-                nav.classList.toggle('scrolled', currentScroll > 50);
-
-                // Hide/show nav based on scroll direction
-                if (currentScroll > lastScroll && currentScroll > 100 && !isMenuOpen) {
-                    nav.classList.add('nav-hidden');
-                } else {
-                    nav.classList.remove('nav-hidden');
-                }
-                
-                lastScroll = currentScroll;
-            }
-
-            // Toggle menu function
-            function toggleMenu() {
-                isMenuOpen = !isMenuOpen;
-                navMenu.classList.toggle('active');
-                overlay.classList.toggle('active');
-                hamburger.querySelector('i').className = isMenuOpen ? 'fas fa-times' : 'fas fa-bars';
-                document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-            }
-
-            // Update active link
-            function updateActiveLink() {
-                const sections = document.querySelectorAll('section');
-                let currentSection = '';
-
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (window.pageYOffset >= sectionTop - 100) {
-                        currentSection = section.getAttribute('id');
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${currentSection}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-
-            // Event Listeners
-            window.addEventListener('scroll', () => {
-                handleScroll();
-                updateActiveLink();
-            });
-
-            hamburger.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleMenu();
-            });
-
-            overlay.addEventListener('click', toggleMenu);
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    if (window.innerWidth <= 768) {
-                        toggleMenu();
-                    }
-                    
-                    if (link.getAttribute('href').startsWith('#')) {
-                        e.preventDefault();
-                        const targetId = link.getAttribute('href').substring(1);
-                        const targetSection = document.getElementById(targetId);
-                        
-                        if (targetSection) {
-                            targetSection.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
-                        }
-                    }
-                });
-            });
-
-            // Close menu on escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && isMenuOpen) {
-                    toggleMenu();
-                }
-            });
-
-            // Handle resize
-            window.addEventListener('resize', () => {
-                if (window.innerWidth > 768 && isMenuOpen) {
-                    toggleMenu();
-                }
-            });
-
-            // Initialize active state
-            updateActiveLink();
-        });
+      
     </script>
 
     <!-- Chatbot Interface -->
     <div class="chat-container">
         <button class="chat-button" aria-label="Open chat">
-            <i class="fas fa-comments"></i>
+            <i class="fas fa-user-secret"></i>
         </button>
         
         <div class="chat-box">
@@ -650,19 +493,23 @@
     </script>
 
     
-     <!-- <nav class="mobile-nav-bar">
+      <nav class="mobile-nav-bar">
         <div class="mobile-nav-items">
             <a href="#home" class="mobile-nav-item">
                 <i class="fas fa-home"></i>
                 <span>Home</span>
             </a>
-            <a href="#about" class="mobile-nav-item">
+            <a href="#about-us" class="mobile-nav-item">
                 <i class="fas fa-info-circle"></i>
                 <span>About</span>
             </a>
             <a href="registration.html" class="mobile-nav-item">
                 <i class="fas fa-user-plus"></i>
                 <span>Admit</span>
+            </a>
+            <a href="Gallery.html" class="mobile-nav-item">
+                <i class="fas fa-images"></i>
+                <span>Gallery</span>
             </a>
             <a href="#contact" class="mobile-nav-item">
                 <i class="fas fa-phone"></i>
@@ -673,7 +520,7 @@
                 <span>Menu</span>
             </a>
         </div>
-    </nav> -->
+    </nav> 
     
     <script src="./script.js"></script>
 
