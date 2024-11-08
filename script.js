@@ -368,154 +368,113 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatButton = document.querySelector('.chat-button');
     const chatBox = document.querySelector('.chat-box');
     const closeChat = document.querySelector('.close-chat');
-    const sendButton = document.querySelector('.send-button');
-    const chatInput = document.querySelector('.chat-input');
+    const clearChat = document.querySelector('.clear-chat');
     const chatMessages = document.querySelector('.chat-messages');
+    const chatInput = document.querySelector('.chat-input');
+    const sendButton = document.querySelector('.send-button');
+    const quickOptions = document.querySelectorAll('.quick-option');
+    const suggestedMessages = document.querySelectorAll('.suggested-message');
 
-    // Enhanced responses with more natural language and variations
-    const responses = {
-        greetings: {
-            keywords: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening'],
-            responses: [
-                "Hello! How can I assist you today?",
-                "Hi there! What can I help you with?",
-                "Welcome! How may I help you?"
-            ]
-        },
-        admission: {
-            keywords: ['admission', 'enroll', 'join', 'register'],
-            responses: [
-                "For admissions, you can:\n• Visit our Admissions page\n• Call us at 01596-242241\n• Email at info@adarshschoolpilani.com\n\nWould you like me to provide more details about the admission process?"
-            ]
-        },
-        fees: {
-            keywords: ['fee', 'fees', 'cost', 'payment'],
-            responses: [
-                "Our fee structure varies by grade level. For detailed information:\n• Contact our admission office\n• Call: 01596-242241\n• Visit our campus\n\nWould you like to schedule a meeting with our admission counselor?"
-            ]
-        },
-        contact: {
-            keywords: ['contact', 'phone', 'email', 'reach'],
-            responses: [
-                "You can reach us through:\n• Phone: 01596-242241\n• Mobile: +91 9462001107\n• Email: info@adarshschoolpilani.com\n• Address: Pilani - Chirawa Rd, near Panchayat Samiti"
-            ]
-        },
-        timing: {
-            keywords: ['timing', 'hours', 'schedule', 'time'],
-            responses: [
-                "School Timings:\n• Monday to Saturday\n• 8:00 AM to 2:30 PM\n\nOffice Hours:\n• 8:00 AM to 4:00 PM"
-            ]
-        },
-        facilities: {
-            keywords: ['facility', 'facilities', 'infrastructure', 'amenities'],
-            responses: [
-                "Our facilities include:\n• Modern Classrooms\n• Computer Labs\n• Science Labs\n• Library\n• Sports Ground\n• Transport\n\nWould you like specific information about any facility?"
-            ]
-        },
-        default: [
-            "I'm here to help! Could you please be more specific about what you'd like to know?",
-            "I'd be happy to assist you. Could you please rephrase your question?",
-            "Let me help you. What specific information are you looking for?"
-        ]
-    };
-
-    // Show typing indicator
-    function showTypingIndicator() {
-        const typing = document.createElement('div');
-        typing.className = 'typing-indicator';
-        typing.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
-        chatMessages.appendChild(typing);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-        return typing;
-    }
-
-    // Get random response from array
-    function getRandomResponse(array) {
-        return array[Math.floor(Math.random() * array.length)];
-    }
-
-    // Find matching response category
-    function findMatchingResponse(message) {
-        const lowercaseMsg = message.toLowerCase();
-        
-        for (const category in responses) {
-            if (category === 'default') continue;
-            
-            const keywords = responses[category].keywords;
-            if (keywords && keywords.some(keyword => lowercaseMsg.includes(keyword))) {
-                return getRandomResponse(responses[category].responses);
-            }
-        }
-        
-        return getRandomResponse(responses.default);
-    }
-
-    // Send message function
-    function sendMessage(message) {
-        if (message.trim() === '') return;
-
-        // Add user message
-        const userMessage = document.createElement('div');
-        userMessage.className = 'message sent';
-        userMessage.innerHTML = `<div class="message-content">${message}</div>`;
-        chatMessages.appendChild(userMessage);
-
-        // Show typing indicator
-        const typingIndicator = showTypingIndicator();
-
-        // Get and add bot response with delay
-        setTimeout(() => {
-            typingIndicator.remove();
-            const botMessage = document.createElement('div');
-            botMessage.className = 'message received';
-            botMessage.innerHTML = `<div class="message-content">${findMatchingResponse(message)}</div>`;
-            chatMessages.appendChild(botMessage);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }, 1500);
-
-        // Clear input
-        chatInput.value = '';
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    // Event Listeners
+    // Toggle chat box
     chatButton.addEventListener('click', () => {
-        chatBox.classList.add('active');
-        chatButton.style.display = 'none';
+        chatBox.classList.toggle('active');
+        chatButton.querySelector('.notification-badge').style.display = 'none';
     });
 
     closeChat.addEventListener('click', () => {
         chatBox.classList.remove('active');
-        chatButton.style.display = 'flex';
     });
 
-    sendButton.addEventListener('click', () => {
-        sendMessage(chatInput.value);
-    });
-
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            sendMessage(chatInput.value);
+    // Clear chat messages
+    clearChat.addEventListener('click', () => {
+        const confirmClear = confirm('Are you sure you want to clear the chat history?');
+        if (confirmClear) {
+            while (chatMessages.children.length > 1) { // Keep the welcome message
+                chatMessages.removeChild(chatMessages.lastChild);
+            }
         }
     });
 
-    // Add quick reply buttons
-    const quickReplies = [
-        'Admission Process',
-        'Fee Structure',
-        'School Timings',
-        'Contact Info',
-        'Facilities'
-    ];
+    // Send message function
+    function sendMessage(message, isUser = true) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${isUser ? 'sent' : 'received'}`;
+        messageDiv.innerHTML = `
+            <div class="message-content">
+                <p>${message}</p>
+                <span class="message-time">${new Date().toLocaleTimeString()}</span>
+            </div>
+        `;
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
 
-    const quickRepliesContainer = document.createElement('div');
-    quickRepliesContainer.className = 'quick-replies';
-    quickReplies.forEach(reply => {
-        const button = document.createElement('button');
-        button.className = 'quick-reply';
-        button.textContent = reply;
-        button.addEventListener('click', () => sendMessage(reply));
-        quickRepliesContainer.appendChild(button);
+    // Handle user input
+    function handleUserInput(message) {
+        sendMessage(message, true);
+        showTypingIndicator();
+        
+        // Simulate bot response
+        setTimeout(() => {
+            hideTypingIndicator();
+            const botResponse = getBotResponse(message);
+            sendMessage(botResponse, false);
+        }, 1000);
+    }
+
+    // Show/hide typing indicator
+    function showTypingIndicator() {
+        const typingIndicator = document.querySelector('.typing-indicator');
+        typingIndicator.style.display = 'flex';
+    }
+
+    function hideTypingIndicator() {
+        const typingIndicator = document.querySelector('.typing-indicator');
+        typingIndicator.style.display = 'none';
+    }
+
+    // Simple bot responses
+    function getBotResponse(message) {
+        message = message.toLowerCase();
+        if (message.includes('admission') || message.includes('apply')) {
+            return 'For admissions, please visit our admissions page or contact us at 01596-242241.';
+        } else if (message.includes('fee') || message.includes('fees')) {
+            return 'Our fee structure varies by grade. Please contact our office for detailed information.';
+        } else if (message.includes('timing') || message.includes('hours')) {
+            return 'School hours are from 8:00 AM to 2:30 PM, Monday through Saturday.';
+        } else if (message.includes('transport') || message.includes('bus')) {
+            return 'We provide transport facilities covering major areas around Pilani. Contact us for route details.';
+        } else {
+            return 'Thank you for your message. Please contact our office for more specific information.';
+        }
+    }
+
+    // Event listeners
+    sendButton.addEventListener('click', () => {
+        const message = chatInput.value.trim();
+        if (message) {
+            handleUserInput(message);
+            chatInput.value = '';
+        }
     });
-    chatBox.insertBefore(quickRepliesContainer, chatBox.querySelector('.chat-input-container'));
+
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && chatInput.value.trim()) {
+            handleUserInput(chatInput.value.trim());
+            chatInput.value = '';
+        }
+    });
+
+    // Quick options and suggested messages
+    quickOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            handleUserInput(option.dataset.query);
+        });
+    });
+
+    suggestedMessages.forEach(suggestion => {
+        suggestion.addEventListener('click', () => {
+            handleUserInput(suggestion.dataset.query);
+        });
+    });
 });

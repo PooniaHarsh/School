@@ -215,7 +215,7 @@
 
     </script>
 
-    <!-- Chatbot Interface -->
+    <!-- Updated Chatbot Interface -->
     <div class="chat-container">
         <button class="chat-button" aria-label="Open chat">
             <i class="fas fa-user-secret"></i>
@@ -223,25 +223,77 @@
 
         <div class="chat-box">
             <div class="chat-header">
-                <h3>School Assistant</h3>
-                <button class="close-chat" aria-label="Close chat">
-                    <i class="fas fa-times"></i>
-                </button>
+                <div class="chat-header-info">
+                    <img src="./images/school-logo.png" alt="School Assistant" class="chat-avatar">
+                    <div>
+                        <h3>School Assistant</h3>
+                        <span class="status">Online</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="clear-chat" aria-label="Clear chat">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                    <button class="close-chat" aria-label="Close chat">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
             </div>
 
             <div class="chat-messages">
-                <div class="message received">
+                <div class="message received welcome-message">
                     <div class="message-content">
-                        Hello! How can I help you today?
+                        <h4>👋 Welcome to Adarsh School!</h4>
+                        <p>I'm your virtual assistant. How can I help you today?</p>
+                        <div class="quick-options">
+                            <button class="quick-option" data-query="admissions">
+                                <i class="fas fa-user-graduate"></i>
+                                <span>Admissions</span>
+                            </button>
+                            <button class="quick-option" data-query="facilities">
+                                <i class="fas fa-building"></i>
+                                <span>Facilities</span>
+                            </button>
+                            <button class="quick-option" data-query="fee structure">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>Fee Structure</span>
+                            </button>
+                            <button class="quick-option" data-query="contact info">
+                                <i class="fas fa-phone-alt"></i>
+                                <span>Contact Us</span>
+                            </button>
+                        </div>
                     </div>
+                </div>
+                <div class="chat-date-separator">
+                    <span>Today</span>
+                </div>
+                <div class="typing-indicator" style="display: none;">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
                 </div>
             </div>
 
             <div class="chat-input-container">
-                <input type="text" class="chat-input" placeholder="Type your message...">
-                <button class="send-button" aria-label="Send message">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
+                <div class="chat-input-wrapper">
+                    <button class="emoji-button" aria-label="Add emoji">
+                        <i class="far fa-smile"></i>
+                    </button>
+                    <input type="text" class="chat-input" placeholder="Type your message...">
+                    <button class="attach-button" aria-label="Attach file">
+                        <i class="fas fa-paperclip"></i>
+                    </button>
+                    <button class="send-button" aria-label="Send message">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="suggested-messages">
+                    <button class="suggested-message" data-query="how to apply">How to apply?</button>
+                    <button class="suggested-message" data-query="school timings">School timings</button>
+                    <button class="suggested-message" data-query="transport facility">Transport facility</button>
+                    <button class="suggested-message" data-query="academic calendar">Academic calendar</button>
+                </div>
             </div>
         </div>
     </div>
