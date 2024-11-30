@@ -2,63 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="school-logo.png">
-    <link rel="shortcut icon" type="image/x-icon" href="school-logo.png">
-    <link rel="apple-touch-icon" href="school-logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - Adarsh Vidhya Niketan Sr. Sec. School</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Gallery Example</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <!-- Add navigation back to home -->
-    <nav class="nav-container">
-        <div class="nav-wrapper">
-            <a href="index.html" class="back-button">
-                <i class="fas fa-arrow-left"></i> Back to Home
-            </a>
-        </div>
-    </nav>
+
+    <!-- Back Navigation Button -->
+    <div class="back-button-container">
+        <a href="index.html" class="back-button">← Back to Home</a>
+    </div>
 
     <section id="gallery" class="section fade-in">
-        <h2>Our Gallery</h2>
-        <div class="gallery-container">
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="./images/building 1.jpg" alt="School Building" loading="lazy">
+        <h2>Gallery</h2>
+        <div class="gallery-tabs">
+            <button class="tab-button active" data-tab="images">Images</button>
+            <button class="tab-button" data-tab="videos">Videos</button>
+        </div>
+
+
+
+
+
+        <div class="gallery-content">
+            <div class="gallery-section images active">
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="./images/building 1.jpg" alt="Image 1">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/building 2.png" alt="Image 2">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/img 1.jpeg" alt="Image 1">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/schoolbg.jpg" alt="Image 2">
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="./images/schoolbg.jpg" alt="School Campus" loading="lazy">
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            <div class="gallery-section videos">
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <video class="responsive-video" controls oncontextmenu="return false;">
+                            <source src="./videos/0726.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="./images/img 1.jpeg" alt="School Activities" loading="lazy">
-                </div>
-                
-                <div class="gallery-item">
-                    <img src="./images/building 2.png" alt="School Facilities" loading="lazy">
-                </div>
-                
             </div>
         </div>
     </section>
 
-    <script>
-        // Add lightbox functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            
-            galleryItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    this.classList.toggle('expanded');
-                });
-            });
-
-            document.addEventListener('click', function(e) {
-                if(e.target.closest('.gallery-item')) return;
-                document.querySelector('.gallery-item.expanded')?.classList.remove('expanded');
-            });
-        });
-    </script>
+    <script src="./script.js"></script>
+    
 </body>
 </html>
 
