@@ -48,6 +48,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+   // Add this script to handle tab switching
+   const tabButtons = document.querySelectorAll('.tab-button');
+   const gallerySections = document.querySelectorAll('.gallery-section');
+
+   tabButtons.forEach(button => {
+       button.addEventListener('click', () => {
+           const targetTab = button.getAttribute('data-tab');
+
+           // Remove active class from all buttons and sections
+           tabButtons.forEach(btn => btn.classList.remove('active'));
+           gallerySections.forEach(section => section.classList.remove('active'));
+
+           // Add active class to the clicked button and corresponding section
+           button.classList.add('active');
+           document.querySelector(`.gallery-section.${targetTab}`).classList.add('active');
+       });
+   });
+
+
+
 
 
 
@@ -478,3 +498,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+
+
+
+
+     
