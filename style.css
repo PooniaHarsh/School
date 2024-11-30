@@ -2193,3 +2193,149 @@
         padding: 6px 12px;
     }
 }
+
+.gallery-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    background: none;
+    border: 1px solid #1e3c72;
+    color: #1e3c72;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.tab-button.active {
+    background: #1e3c72;
+    color: white;
+}
+
+.gallery-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gallery-section {
+    display: none; /* Hide all sections by default */
+}
+
+.gallery-section.active {
+    display: block; /* Show the active section */
+}
+
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img,
+.gallery-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.back-button-container {
+    display: flex; /* Use flexbox for centering */
+    justify-content: left; /* Center horizontally */
+    margin: 20px 0; /* Add some margin above and below */
+}
+
+.back-button {
+    display: inline-block; /* Make the link behave like a button */
+    padding: 10px 20px; /* Add padding for better click area */
+    background-color: #1e3c72; /* Background color */
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.back-button:hover {
+    background-color: #1a2a4d; /* Darker background on hover */
+}
+
+/* Responsive Video Styles */
+.responsive-video {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease;
+}
+
+.responsive-video:hover {
+    transform: scale(1.02);
+}
+
+/* Gallery Styles */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    aspect-ratio: 16/9; /* Maintain aspect ratio */
+    cursor: pointer;
+}
+
+.gallery-item img,
+.gallery-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+}
+
+/* Add this new section styles */
+#social-media {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.social-media-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-media-link {
+    font-size: 2em;
+    color: #1e3c72;
+    transition: transform 0.3s;
+}
+
+.social-media-link:hover {
+    transform: scale(1.1);
+    color: #ff6b6b; /* Change color on hover */
+}
+
