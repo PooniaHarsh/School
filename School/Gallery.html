@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Example</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <!-- Back Navigation Button -->
+    <div class="back-button-container">
+        <a href="index.html" class="back-button">← Back to Home</a>
+    </div>
+
+    <section id="gallery" class="section fade-in">
+        <h2>Gallery</h2>
+        <div class="gallery-tabs">
+            <button class="tab-button active" data-tab="images">Images</button>
+            <button class="tab-button" data-tab="videos">Videos</button>
+        </div>
+
+
+
+
+
+        <div class="gallery-content">
+            <div class="gallery-section images active">
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="./images/building 1.jpg" alt="Image 1">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/building 2.png" alt="Image 2">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/img 1.jpeg" alt="Image 1">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/schoolbg.jpg" alt="Image 2">
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            <div class="gallery-section videos">
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <video class="responsive-video" controls oncontextmenu="return false;">
+                            <source src="./videos/0726.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="./script.js"></script>
+    
+</body>
+</html>
+
+
+
+
+
+<!-- Add Gallery Section -->

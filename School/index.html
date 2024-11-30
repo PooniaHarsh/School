@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/x-icon" href="./images/school-logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="./images/school-logo.png">
+    <link rel="apple-touch-icon" href="./images/school-logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Adarsh Vidhya Niketan Sr. Sec. School, Pilani</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./Gallery.html">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0/css/all.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+
+
+    </style>
+</head>
+
+<body>
+
+    <header class="header-with-background">
+        <div class="logo-container">
+            <img src="./images/school-logo.png" alt="Adasrh Vidhya Niketan Logo" class="school-logo">
+        </div>
+        <h1 class="school-name">Adasrh Vidhya Niketan Sr. Sec. School</h1>
+        <p class="location">Pilani</p>
+    </header>
+
+    <!-- Remove the old nav container and replace with this simplified version for desktop only -->
+    <nav class="nav-container desktop-nav">
+        <div class="nav-wrapper">
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about-us" class="nav-link">About</a></li>
+                <li><a href="registration.html" class="nav-link register-highlight">Admissions</a></li>
+                <li><a href="#academics" class="nav-link">Academics</a></li>
+                <li><a href="#facilities" class="nav-link">Facilities</a></li>
+                <li><a href="Gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="#careers" class="nav-link">Careers</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="search-container">
+        <div class="search-wrapper">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search courses, facilities, events...">
+                <button class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <section id="home" class="section fade-in">
+            <h2>Welcome to the ADARSH SCHOOL PILANI</h2>
+            <h3>Creating Smart Leaders of Tomorrow</h3>
+            <br>
+            <p>We continually aim to offer best practices in education that can ensure our students' fulfilling careers
+                in future. Through our streamlined curriculum and an open-minded approach, we look for areas of
+                opportunity and seek strategies for a way forward. Our goal is to lay the foundation of education on the
+                pillars of humility, character and righteousness.</p>
+        </section>
+
+        <!-- Add new results section -->
+        <section id="results" class="section fade-in">
+            <h2>Our Outstanding Achievers</h2>
+            <div class="results-slider">
+                <div class="results-slides" id="resultsSlides">
+                    <!-- Added both images to the slider -->
+                    <div class="result-slide">
+                        <img src="./images/result.jpg" alt="Academic Achievements 2024-25" class="result-image">
+                    </div>
+                    <div class="result-slide">
+                        <img src="./images/Pumplet2024.jpg" alt="Academic Achievements " class="result-image">
+                    </div>
+                    <div class="result-slide">
+                        <img src="./images/10 board.jpeg" alt="Academic Achievements " class="result-image">
+                    </div>
+                    <div class="result-slide">
+                        <img src="./images/Pumplet a.jpg" alt="Academic Achievements " class="result-image">
+                    </div>
+                    <div class="result-slide">
+                        <img src="./images/Pumplet b.jpg" alt="Admission Open " class="result-image">
+                    </div>
+                    <div class="result-slide">
+                        <img src="./images/admission.png" alt="Admission Open " class="result-image">
+                    </div>
+                </div>
+
+                <!-- Navigation buttons -->
+                <button class="result-btn prev-result" onclick="moveSlide(-1)">❮</button>
+                <button class="result-btn next-result" onclick="moveSlide(1)">❯</button>
+
+                <!-- Dots for navigation -->
+                <div class="result-dots" id="resultDots"></div>
+            </div>
+        </section>
+
+
+        <!-- Add other sections as needed -->
+
+        <!-- Add this new section before closing the main-content div -->
+        
+    </main>
+
+    <!-- Add this before closing the main-content div -->
+
+    <section id="about-us" class="section fade-in">
+        <h2>About Us</h2>
+        <div class="about-container">
+            <div class="about-content">
+                <h3>Our Vision</h3>
+                <p>To provide quality education that prepares students for the challenges of tomorrow while instilling
+                    strong moral values and cultural awareness.</p>
+
+                <h3>Our Mission</h3>
+                <p>Creating an environment of academic excellence, character building, and holistic development through
+                    innovative teaching methods and modern facilities.</p>
+
+                <h3>Our Values</h3>
+                <ul>
+                    <li>Academic Excellence</li>
+                    <li>Character Development</li>
+                    <li>Innovation in Learning</li>
+                    <li>Cultural Integration</li>
+                    <li>Community Service</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section fade-in">
+        <h2>Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Address</h3>
+                    <p>Adarsh Vidhya Niketan Sr. Sec. School</p>
+                    <p>Pilani - Chirawa Rd, near Panchayat Samiti, Pilani, Rajasthan 333031</p>
+                    <!-- Updated Google Maps Embed with exact coordinates -->
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d75.58972883558216!3d28.374327259050077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDIyJzI3LjYiTiA3NcKwMzUnMjMuMCJF!5e0!3m2!1sen!2sin!4v1710091234567!5m2!1sen!2sin"
+                            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <!-- Updated directions link with exact coordinates -->
+                    <div class="directions-container">
+                        <a href="https://www.google.com/maps/search/?api=1&query=28.374327259050077,75.58972883558216"
+                            target="_blank" class="directions-btn">
+                            <i class="fas fa-directions"></i>
+                            Get Directions to School
+                        </a>
+                    </div>
+                    <!-- Added coordinates display -->
+                    <div class="plus-code">
+                        <p><i class="fas fa-map-marker-alt"></i> Location: <strong>28.374327259050077,
+                                75.58972883558216</strong></p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p>01596-242241</p>
+                    <p>+91 9462001107</p>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>info@adarshschoolpilani.com</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Send us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Your Phone">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+        
+    </section>
+    <section id="social-media" class="section fade-in">
+        <h2>Connect with Us</h2>
+        <div class="social-media-container">
+            <a href="https://www.facebook.com/profile.php?id=100082364529818&mibextid=JRoKGi" target="_blank" class="social-media-link">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/adarsh_shikshan_samuh_pilani/" target="_blank" class="social-media-link">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com/channel/UCUiwyFhBM2p8mlk0eYp_TJw" target="_blank" class="social-media-link">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://twitter.com/YourProfile" target="_blank" class="social-media-link">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </div>
+    </section>
+
+    <script>
+
+    </script>
+
+    <script>
+
+    </script>
+
+    <script>
+
+    </script>
+
+    <!-- Updated Chatbot Interface -->
+    <div class="chat-container">
+        <button class="chat-button" aria-label="Open chat">
+            <i class="fas fa-user-secret"></i>
+        </button>
+
+        <div class="chat-box">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <img src="./images/school-logo.png" alt="School Assistant" class="chat-avatar">
+                    <div>
+                        <h3>School Assistant</h3>
+                        <span class="status">Online</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="clear-chat" aria-label="Clear chat">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                    <button class="close-chat" aria-label="Close chat">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="chat-messages">
+                <div class="message received welcome-message">
+                    <div class="message-content">
+                        <h4>👋 Welcome to Adarsh School!</h4>
+                        <p>I'm your virtual assistant. How can I help you today?</p>
+                        <div class="quick-options">
+                            <button class="quick-option" data-query="admissions">
+                                <i class="fas fa-user-graduate"></i>
+                                <span>Admissions</span>
+                            </button>
+                            <button class="quick-option" data-query="facilities">
+                                <i class="fas fa-building"></i>
+                                <span>Facilities</span>
+                            </button>
+                            <button class="quick-option" data-query="fee structure">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>Fee Structure</span>
+                            </button>
+                            <button class="quick-option" data-query="contact info">
+                                <i class="fas fa-phone-alt"></i>
+                                <span>Contact Us</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-date-separator">
+                    <span>Today</span>
+                </div>
+                <div class="typing-indicator" style="display: none;">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <div class="chat-input-wrapper">
+                    <button class="emoji-button" aria-label="Add emoji">
+                        <i class="far fa-smile"></i>
+                    </button>
+                    <input type="text" class="chat-input" placeholder="Type your message...">
+                    <button class="attach-button" aria-label="Attach file">
+                        <i class="fas fa-paperclip"></i>
+                    </button>
+                    <button class="send-button" aria-label="Send message">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="suggested-messages">
+                    <button class="suggested-message" data-query="how to apply">How to apply?</button>
+                    <button class="suggested-message" data-query="school timings">School timings</button>
+                    <button class="suggested-message" data-query="transport facility">Transport facility</button>
+                    <button class="suggested-message" data-query="academic calendar">Academic calendar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <nav class="mobile-nav-bar">
+        <div class="mobile-nav-items">
+            <a href="#home" class="mobile-nav-item">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#about-us" class="mobile-nav-item">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+            </a>
+            <a href="registration.html" class="mobile-nav-item">
+                <i class="fas fa-user-plus"></i>
+                <span>Admit</span>
+            </a>
+            <a href="Gallery.html" class="mobile-nav-item">
+                <i class="fas fa-images"></i>
+                <span>Gallery</span>
+            </a>
+            <a href="#contact" class="mobile-nav-item">
+                <i class="fas fa-phone"></i>
+                <span>Contact</span>
+            </a>
+            <a href="#" class="mobile-nav-item menu-toggle">
+                <i class="fas fa-bars"></i>
+                <span>Menu</span>
+            </a>
+        </div>
+    </nav>
+    
+
+   <div></div>
+
+
+    <script src="./script.js"></script>
+
+
+</body>
+
+</html>
